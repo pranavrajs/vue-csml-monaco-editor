@@ -1,3 +1,5 @@
+import * as monaco$2 from 'monaco-editor';
+
 /* eslint-disable vue/require-default-prop */
 
 /**
@@ -328,56 +330,56 @@ var csmlMonarchTokens = {
   }
 };
 
-const monaco$2 = require('monaco-editor');
+const monaco$1 = require('monaco-editor');
 
 const macros = ['App', 'Audio', 'Base64', 'Card', 'Carousel', 'Crypto', 'Exists', 'Find', 'Floor', 'Hex', 'HTTP', 'Image', 'JWT', 'Length', 'Object', 'OneOf', 'Or', 'Question', 'Random', 'Shuffle', 'SMTP', 'Text', 'Time', 'Typing', 'Url', 'UUID', 'Video', 'Wait', // Studio components
 'Calendar', 'Input', 'LaTeX', 'Multiselect', 'QuickReply'].map(macro => {
   return {
     label: macro,
-    kind: monaco$2.languages.CompletionItemKind.Snippet,
+    kind: monaco$1.languages.CompletionItemKind.Snippet,
     insertText: macro + '(${1:parameters})',
-    insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+    insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet,
     documentation: `${macro} Statement`
   };
 });
 const keywords = [{
   label: 'say',
-  kind: monaco$2.languages.CompletionItemKind.Keyword,
+  kind: monaco$1.languages.CompletionItemKind.Keyword,
   insertText: 'say "$0"',
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet
 }, {
   label: 'goto',
-  kind: monaco$2.languages.CompletionItemKind.Keyword,
+  kind: monaco$1.languages.CompletionItemKind.Keyword,
   insertText: 'goto $0',
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet
 }, {
   label: 'remember',
-  kind: monaco$2.languages.CompletionItemKind.Keyword,
+  kind: monaco$1.languages.CompletionItemKind.Keyword,
   insertText: 'remember $1 = $0',
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet
 }, {
   label: 'forget',
-  kind: monaco$2.languages.CompletionItemKind.Keyword,
+  kind: monaco$1.languages.CompletionItemKind.Keyword,
   insertText: 'forget $0',
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet
 }];
 const structures = [{
   label: 'if',
-  kind: monaco$2.languages.CompletionItemKind.Snippet,
+  kind: monaco$1.languages.CompletionItemKind.Snippet,
   insertText: ['if (${1:condition}) {', '\t$0', '}'].join('\n'),
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet,
   documentation: 'If Statement'
 }, {
   label: 'ifelse',
-  kind: monaco$2.languages.CompletionItemKind.Snippet,
+  kind: monaco$1.languages.CompletionItemKind.Snippet,
   insertText: ['if (${1:condition}) {', '\t$0', '} else {', '\t', '}'].join('\n'),
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet,
   documentation: 'If-Else Statement'
 }, {
   label: 'foreach',
-  kind: monaco$2.languages.CompletionItemKind.Snippet,
+  kind: monaco$1.languages.CompletionItemKind.Snippet,
   insertText: ['foreach (${1:item}) in ${2:items} {', '\t$0', '}'].join('\n'),
-  insertTextRules: monaco$2.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+  insertTextRules: monaco$1.languages.CompletionItemInsertTextRule.InsertAsSnippet,
   documentation: 'For-Each Statement'
 }];
 const csmlCompletion = [...macros, ...keywords, ...structures];
@@ -426,7 +428,7 @@ var csmlCompletionItemProvider = {
 };
 
 /* eslint-disable no-useless-escape */
-const monaco$1 = require('monaco-editor');
+const monaco = require('monaco-editor');
 
 var csmlLanguageConfiguration = {
   // the default separators except `@$`
@@ -441,28 +443,28 @@ var csmlLanguageConfiguration = {
     beforeText: /^\s*\/\*\*(?!\/)([^\*]|\*(?!\/))*$/,
     afterText: /^\s*\*\/$/,
     action: {
-      indentAction: monaco$1.languages.IndentAction.IndentOutdent,
+      indentAction: monaco.languages.IndentAction.IndentOutdent,
       appendText: ' * '
     }
   }, {
     // e.g. /** ...|
     beforeText: /^\s*\/\*\*(?!\/)([^\*]|\*(?!\/))*$/,
     action: {
-      indentAction: monaco$1.languages.IndentAction.None,
+      indentAction: monaco.languages.IndentAction.None,
       appendText: ' * '
     }
   }, {
     // e.g.  * ...|
     beforeText: /^(\t|(\ \ ))*\ \*(\ ([^\*]|\*(?!\/))*)?$/,
     action: {
-      indentAction: monaco$1.languages.IndentAction.None,
+      indentAction: monaco.languages.IndentAction.None,
       appendText: '* '
     }
   }, {
     // e.g.  */|
     beforeText: /^(\t|(\ \ ))*\ \*\/\s*$/,
     action: {
-      indentAction: monaco$1.languages.IndentAction.None,
+      indentAction: monaco.languages.IndentAction.None,
       removeText: 1
     }
   }],
@@ -1186,22 +1188,6 @@ var nightOwl = {
 };
 
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-const monaco = require('monaco-editor');
 /**
  * A Monaco editor component with CSML support and a default opiniated configuration.
  *
@@ -1257,12 +1243,12 @@ var script = {
 
   mounted() {
     // Register the CSML language
-    monaco.languages.register({
+    monaco$2.languages.register({
       id: 'csml'
     });
-    monaco.languages.onLanguage('csml', this.setupCsmlSupport); // Define the Night Owl theme
+    monaco$2.languages.onLanguage('csml', this.setupCsmlSupport); // Define the Night Owl theme
 
-    monaco.editor.defineTheme('night-owl', nightOwl);
+    monaco$2.editor.defineTheme('night-owl', nightOwl);
     this.isMounted = true;
   },
 
@@ -1279,16 +1265,16 @@ var script = {
     },
 
     setupCsmlSupport() {
-      monaco.languages.setMonarchTokensProvider('csml', csmlMonarchTokens);
-      monaco.languages.setLanguageConfiguration('csml', csmlLanguageConfiguration);
-      monaco.languages.registerCompletionItemProvider('csml', csmlCompletionItemProvider);
+      monaco$2.languages.setMonarchTokensProvider('csml', csmlMonarchTokens);
+      monaco$2.languages.setLanguageConfiguration('csml', csmlLanguageConfiguration);
+      monaco$2.languages.registerCompletionItemProvider('csml', csmlCompletionItemProvider);
     },
 
     setupCommands(editor) {
       // Ctrl + S: save
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_S, () => this.$emit('save')); // Ctrl + Shift + /: line comment
+      editor.addCommand(monaco$2.KeyMod.CtrlCmd | monaco$2.KeyCode.KEY_S, () => this.$emit('save')); // Ctrl + Shift + /: line comment
 
-      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.US_SLASH, () => editor.getAction('editor.action.commentLine').run());
+      editor.addCommand(monaco$2.KeyMod.CtrlCmd | monaco$2.KeyMod.Shift | monaco$2.KeyCode.US_SLASH, () => editor.getAction('editor.action.commentLine').run());
     },
 
     onChange(value) {
@@ -1385,8 +1371,8 @@ var __vue_staticRenderFns__ = [];
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-12c61e5e_0", {
-    source: ".c-csml-monaco-editor[data-v-12c61e5e]{position:relative}.c-monaco-editor[data-v-12c61e5e]{position:absolute;top:0;right:0;bottom:0;left:0}.c-monaco-editor[data-v-12c61e5e] :focus{outline:1px solid #007fd4}",
+  inject("data-v-32693699_0", {
+    source: ".c-csml-monaco-editor[data-v-32693699]{position:relative}.c-monaco-editor[data-v-32693699]{position:absolute;top:0;right:0;bottom:0;left:0}.c-monaco-editor[data-v-32693699] :focus{outline:1px solid #007fd4}",
     map: undefined,
     media: undefined
   });
@@ -1394,7 +1380,7 @@ const __vue_inject_styles__ = function (inject) {
 /* scoped */
 
 
-const __vue_scope_id__ = "data-v-12c61e5e";
+const __vue_scope_id__ = "data-v-32693699";
 /* module identifier */
 
 const __vue_module_identifier__ = undefined;
