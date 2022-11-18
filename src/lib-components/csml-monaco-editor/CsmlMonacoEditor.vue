@@ -15,7 +15,7 @@
 </template>
 
 <script>
-const monaco = require('monaco-editor');
+import * as monaco from 'monaco-editor';
 import MonacoEditor from './MonacoEditor';
 import defaultOptions from './configuration/default-options';
 import csmlMonarchTokens from './configuration/csml/monarch-tokens.js';
